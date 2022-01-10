@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Card from './components/Card';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -10,11 +11,12 @@ function App() {
       .then((json) => {
         setMovies(json.data.movies);
         setLoading(false);
+        console.log(movies);
       });
   }, []);
   return (
     <Container>
-      <div>{loading ? <h1>Loading...</h1> : null}</div>
+      <div>{loading ? <h1>Loading...</h1> : <Card movies={movies} />}</div>
     </Container>
   );
 }

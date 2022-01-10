@@ -16,7 +16,6 @@
   "plugins": ["import", "react-hooks"],
   "rules": {
     "no-underscore-dangle": "off",
-    "react/forbid-prop-types": 0,
     "object-curly-newline": 0,
     "no-console": 0,
     "no-alert": 0,
@@ -25,7 +24,7 @@
     "linebreak-style": 0,
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "react/jsx-props-no-spreading": "off",
+    // "react/jsx-props-no-spreading": "off",
     "no-unused-vars": "off",
     "consistent-return": "off",
     "no-restricted-globals": "off"
