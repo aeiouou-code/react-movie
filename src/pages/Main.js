@@ -16,7 +16,10 @@ function Main() {
   }, []);
   return (
     <Container>
-      <div>{loading ? <Loading>Loading...</Loading> : <Card movies={movies} />}</div>
+      <div>
+        <Title>Movies</Title>
+        {loading ? <Loading>Loading...</Loading> : <Card movies={movies} />}
+      </div>
     </Container>
   );
 }
@@ -26,6 +29,10 @@ const Container = styled.main`
   flex-direction: column;
   align-items: center;
   background-color: black;
+`;
+
+const Title = styled.h1`
+  font-size: 24px;
 `;
 
 const Loading = styled.div`
