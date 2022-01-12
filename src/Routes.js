@@ -1,20 +1,21 @@
 import React from 'react';
-import react from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { ROUTES_PATH } from './constants/routesPath';
 import Main from './pages/Main';
+import Detail from 'pages/Detail';
 
-class Routes extends React.Component {
+class RoutesPath extends React.Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route exact path={ROUTES_PATH.MAIN} component={Main}></Route>
-        </Switch>
-      </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path={ROUTES_PATH.MAIN} element={<Main />}></Route>
+          <Route path={ROUTES_PATH.DETAIL} element={<Detail />}></Route>
+        </Routes>
+      </BrowserRouter>
     );
   }
 }
 
-export default Routes;
+export default RoutesPath;
