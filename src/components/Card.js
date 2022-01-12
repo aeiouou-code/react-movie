@@ -1,14 +1,14 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 
 function Card({ movies }) {
   return (
-    <Link to={{ pathname: '/movie-detail', state: movies }}>
+    <Container>
       {movies.map((movie) => (
-        <Box key={movie.id}>
+        <StyledLink to={{ pathname: '/movie-detail', state: movies }} key={movie.id}>
           <Left>
             <img src={movie.medium_cover_image} alt={movie.title} />
           </Left>
@@ -26,9 +26,9 @@ function Card({ movies }) {
               Play
             </Button>
           </Right>
-        </Box>
+        </StyledLink>
       ))}
-    </Link>
+    </Container>
   );
 }
 
@@ -37,7 +37,18 @@ const Container = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 
-const Box = styled.div`
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+    color: white;
+  }
+
   display: flex;
   flex-direction: row;
   width: 480px;

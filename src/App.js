@@ -1,8 +1,8 @@
 import { React, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Card from '../components/Card';
+import Card from './components/Card';
 
-function Main() {
+function App() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -16,7 +16,7 @@ function Main() {
   }, []);
   return (
     <Container>
-      <div>{loading ? <Loading>Loading...</Loading> : <Card movies={movies} />}</div>
+      <div>{loading ? <h1>Loading...</h1> : <Card movies={movies} />}</div>
     </Container>
   );
 }
@@ -25,13 +25,5 @@ const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
 `;
-
-const Loading = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 24px;
-  color: white;
-`;
-export default Main;
+export default App;
