@@ -11,15 +11,11 @@ function Main() {
       .then((json) => {
         setMovies(json.data.movies);
         setLoading(false);
-        console.log(movies);
       });
   }, []);
   return (
     <Container>
-      <div>
-        <Title>Movies</Title>
-        {loading ? <Loading>Loading...</Loading> : <Card movies={movies} />}
-      </div>
+      <div>{loading ? <Loading>Loading...</Loading> : <Card movies={movies} />}</div>
     </Container>
   );
 }
@@ -29,10 +25,7 @@ const Container = styled.main`
   flex-direction: column;
   align-items: center;
   background-color: black;
-`;
-
-const Title = styled.h1`
-  font-size: 24px;
+  padding: 50px 0px;
 `;
 
 const Loading = styled.div`
