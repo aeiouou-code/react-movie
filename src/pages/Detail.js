@@ -20,10 +20,12 @@ function Detail() {
   return (
     <Container movie={movie}>
       <Background>
-        <Top>
+        <Left>
           <img src={movie.medium_cover_image} alt="background_" />
-        </Top>
-        <Bottom>
+          <AddBtn>Add to My List</AddBtn>
+          <ShareBtn>Share</ShareBtn>
+        </Left>
+        <Right>
           <Title>{movie.title}</Title>
           <Rating>
             <Bold>Rating</Bold> {movie.rating}
@@ -35,7 +37,7 @@ function Detail() {
             <Bold>Running Time</Bold> {movie.runtime}m
           </Runtime>
           <Genre>
-            <Bold>Genre</Bold>
+            <Bold>Genres</Bold>
             {movie.genres &&
               movie.genres.map((genre, index) => (
                 <>
@@ -45,7 +47,7 @@ function Detail() {
               ))}
           </Genre>
           <Description>{movie.description_intro}</Description>
-        </Bottom>
+        </Right>
       </Background>
     </Container>
   );
@@ -57,7 +59,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: black;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+  background-image: linear-gradient(to Right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)),
     url(${(props) => props.movie.background_image_original});
   background-size: cover;
   padding: 100px 0px;
@@ -67,13 +69,36 @@ const Background = styled.div`
   display: flex;
   flex-direction: row;
   /* align-items: center; */
-  max-width: 900px;
-  padding: 0px 100px;
+  max-width: 800px;
+  padding: 50px 50px;
+  border-radius: 10px;
 `;
 
-const Top = styled.div``;
+const Left = styled.div`
+  img {
+    margin-bottom: 15px;
+  }
+  button {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #171717;
+    color: white;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    padding: 10px 15px;
+    font-size: 16px;
 
-const Bottom = styled.div`
+    :hover {
+      background-color: #202020;
+    }
+  }
+`;
+
+const AddBtn = styled.button``;
+const ShareBtn = styled.button``;
+
+const Right = styled.div`
   margin-left: 50px;
 `;
 
@@ -87,7 +112,7 @@ const Bold = styled.div`
 const Title = styled.div`
   font-size: 40px;
   font-weight: 600;
-  padding-bottom: 20px;
+  padding: 0px 20px 20px 0px;
   line-height: 1.2;
   color: white;
 `;
@@ -96,28 +121,28 @@ const Rating = styled.div`
   font-size: 16px;
   line-height: 1.5;
   color: white;
-  margin-bottom: 5px;
+  margin-right: 5px;
 `;
 
 const Year = styled.div`
   font-size: 16px;
   line-height: 1.5;
   color: white;
-  margin-bottom: 5px;
+  margin-right: 5px;
 `;
 
 const Runtime = styled.div`
   font-size: 16px;
   line-height: 1.5;
   color: white;
-  margin-bottom: 5px;
+  margin-right: 5px;
 `;
 
 const Genre = styled.div`
   font-size: 16px;
   line-height: 1.5;
   color: white;
-  margin-bottom: 5px;
+  margin-right: 5px;
 
   li {
     display: inline;
