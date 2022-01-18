@@ -8,25 +8,27 @@ function Card({ movies }) {
   return (
     <Container>
       {movies.map((movie) => (
-        <StyledLink to={{ pathname: '/movie-detail', state: movies }} key={movie.id}>
-          <Left>
-            <img src={movie.medium_cover_image} alt={movie.title} />
-          </Left>
-          <Right>
-            <Title>{movie.title}</Title>
-            <ul>
-              {movie.genres.map((genre) => (
-                <li>{genre}</li>
-              ))}
-            </ul>
-            <Year>{movie.year}</Year>
-            {movie.summary ? <Summary>{movie.summary}</Summary> : null}
-            <Button>
-              <img src="/images/play_arrow.svg" alt="" />
-              Play
-            </Button>
-          </Right>
-        </StyledLink>
+        <div>
+          <StyledLink to={`/movie/${movie.id}`} key={movie.id}>
+            <Left>
+              <img src={movie.medium_cover_image} alt={movie.title} />
+            </Left>
+            <Right>
+              <Title>{movie.title}</Title>
+              <ul>
+                {movie.genres.map((genre) => (
+                  <li>{genre}</li>
+                ))}
+              </ul>
+              <Year>{movie.year}</Year>
+              {movie.summary ? <Summary>{movie.summary}</Summary> : null}
+              <Button>
+                <img src="/images/play_arrow.svg" alt="" />
+                Play
+              </Button>
+            </Right>
+          </StyledLink>
+        </div>
       ))}
     </Container>
   );
