@@ -1,6 +1,8 @@
 import react, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components/macro';
+import Add from 'assets/plus.svg';
+import Share from 'assets/share.svg';
 
 function Detail() {
   const { id } = useParams();
@@ -21,9 +23,15 @@ function Detail() {
     <Container movie={movie}>
       <Background>
         <Left>
-          <img src={movie.medium_cover_image} alt="background_" />
-          <AddBtn>Add to My List</AddBtn>
-          <ShareBtn>Share</ShareBtn>
+          <Poster src={movie.medium_cover_image} alt="background_" />
+          <AddBtn>
+            <img src={Add} alt="icon" />
+            <div>Add to My List</div>
+          </AddBtn>
+          <ShareBtn>
+            <img src={Share} alt="icon" />
+            <div>Share</div>
+          </ShareBtn>
         </Left>
         <Right>
           <Title>{movie.title}</Title>
@@ -75,13 +83,10 @@ const Background = styled.div`
 `;
 
 const Left = styled.div`
-  img {
-    margin-bottom: 15px;
-  }
   button {
     display: block;
     margin-bottom: 10px;
-    background-color: #171717;
+    background-color: #131313;
     color: white;
     border-radius: 5px;
     outline: 0;
@@ -95,8 +100,40 @@ const Left = styled.div`
   }
 `;
 
-const AddBtn = styled.button``;
-const ShareBtn = styled.button``;
+const Poster = styled.img`
+  margin-bottom: 15px;
+`;
+
+const AddBtn = styled.button`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  img {
+    margin-right: 10px;
+  }
+
+  div {
+    display: inline;
+  }
+`;
+const ShareBtn = styled.button`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  img {
+    margin-right: 10px;
+  }
+
+  div {
+    display: inline;
+  }
+`;
 
 const Right = styled.div`
   margin-left: 50px;
