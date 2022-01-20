@@ -1,7 +1,7 @@
 import react, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components/macro';
-import Add from 'assets/plus.svg';
+import { ReactComponent as Add } from 'assets/plus.svg';
 import Share from 'assets/share.svg';
 
 function Detail() {
@@ -25,7 +25,7 @@ function Detail() {
         <Left>
           <Poster src={movie.medium_cover_image} alt="background_" />
           <AddBtn>
-            <img src={Add} alt="icon" />
+            <Add fill="white" />
             <div>Add to My List</div>
           </AddBtn>
           <ShareBtn>
@@ -111,8 +111,9 @@ const AddBtn = styled.button`
   justify-content: center;
   text-align: center;
 
-  img {
-    margin-right: 10px;
+  svg {
+    width: 14px;
+    margin-right: 8px;
   }
 
   div {
