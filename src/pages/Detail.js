@@ -7,6 +7,7 @@ import Share from 'assets/share.svg';
 function Detail() {
   const { id } = useParams();
   const [movie, setMovie] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getMovie = async () => {
     const json = await (
@@ -14,6 +15,7 @@ function Detail() {
     ).json();
     console.log(json);
     setMovie(json.data.movie);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -21,42 +23,48 @@ function Detail() {
   }, []);
   return (
     <Container movie={movie}>
-      <Background>
-        <Left>
-          <Poster src={movie.medium_cover_image} alt="background_" />
-          <AddBtn>
-            <Add fill="white" />
-            <div>Add to My List</div>
-          </AddBtn>
-          <ShareBtn>
-            <img src={Share} alt="icon" />
-            <div>Share</div>
-          </ShareBtn>
-        </Left>
-        <Right>
-          <Title>{movie.title}</Title>
-          <Rating>
-            <Bold>Rating</Bold> {movie.rating}
-          </Rating>
-          <Year>
-            <Bold>Year</Bold> {movie.year}
-          </Year>
-          <Runtime>
-            <Bold>Running Time</Bold> {movie.runtime}m
-          </Runtime>
-          <Genre>
-            <Bold>Genres</Bold>
-            {movie.genres &&
-              movie.genres.map((genre, index) => (
-                <>
-                  <li>{genre} </li>
-                  {index !== movie.genres.length - 1 && <Bar>|</Bar>}
-                </>
-              ))}
-          </Genre>
-          <Description>{movie.description_intro}</Description>
-        </Right>
-      </Background>
+      <div>
+        {loading ? (
+          <Loading>Loading...</Loading>
+        ) : (
+          <Background>
+            <Left>
+              <Poster src={movie.medium_cover_image} alt="background_" />
+              <AddBtn>
+                <Add fill="white" />
+                <div>Add to My List</div>
+              </AddBtn>
+              <ShareBtn>
+                <img src={Share} alt="icon" />
+                <div>Share</div>
+              </ShareBtn>
+            </Left>
+            <Right>
+              <Title>{movie.title}</Title>
+              <Rating>
+                <Bold>Rating</Bold> {movie.rating}
+              </Rating>
+              <Year>
+                <Bold>Year</Bold> {movie.year}
+              </Year>
+              <Runtime>
+                <Bold>Running Time</Bold> {movie.runtime}m
+              </Runtime>
+              <Genre>
+                <Bold>Genres</Bold>
+                {movie.genres &&
+                  movie.genres.map((genre, index) => (
+                    <>
+                      <li>{genre} </li>
+                      {index !== movie.genres.length - 1 && <Bar>|</Bar>}
+                    </>
+                  ))}
+              </Genre>
+              <Description>{movie.description_intro}</Description>
+            </Right>{' '}
+          </Background>
+        )}
+      </div>
     </Container>
   );
 }
@@ -80,6 +88,13 @@ const Background = styled.div`
   max-width: 800px;
   padding: 50px 50px;
   border-radius: 10px;
+`;
+
+const Loading = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: white;
 `;
 
 const Left = styled.div`
