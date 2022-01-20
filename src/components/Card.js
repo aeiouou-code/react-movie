@@ -1,8 +1,9 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
+import { ReactComponent as Info } from 'assets/info.svg';
+import { ReactComponent as Add } from 'assets/plus.svg';
+import Share from 'assets/share.svg';
 
 function Card({ movies }) {
   return (
@@ -22,10 +23,16 @@ function Card({ movies }) {
               </ul>
               <Year>{movie.year}</Year>
               {movie.summary ? <Summary>{movie.summary}</Summary> : null}
-              <Button>
-                <img src="/images/play_arrow.svg" alt="" />
-                Play
-              </Button>
+              <ButtonWrapper>
+                <Button>
+                  <Info width="14" height="14" fill="black" />
+                  <Text>View More</Text>
+                </Button>
+                <AddBtn>
+                  <Add fill="#808080" />
+                  <div>Add to My List</div>
+                </AddBtn>
+              </ButtonWrapper>
             </Right>
           </StyledLink>
         </div>
@@ -95,6 +102,10 @@ const Title = styled.h1`
   line-height: 1.2;
 `;
 
+const Text = styled.div`
+  margin-left: 5px;
+`;
+
 const Summary = styled.div`
   height: 60px;
   max-width: 280px;
@@ -116,19 +127,22 @@ const Year = styled.div`
   color: #8c8c8c;
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 8px;
+  background-color: white;
   border: none;
   border-radius: 2px;
-  width: 60px;
   height: 30px;
   font-size: 13px;
   font-weight: 600;
   color: #252529;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: white;
 
   :hover {
     background-color: #d8d8d8;
@@ -137,6 +151,41 @@ const Button = styled.button`
   img {
     margin-right: 5px;
     height: 12px;
+    width: 10px;
+  }
+`;
+
+const AddBtn = styled.button`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: 10px;
+  color: #808080;
+  border-radius: 2px;
+  outline: 0;
+  border: 0;
+  font-size: 14px;
+  font-weight: 500;
+  height: 30px;
+  background-color: #1d1d1d;
+
+  div {
+    display: inline;
+    margin-left: 8px;
+  }
+
+  svg {
+    width: 14px;
+  }
+
+  :hover svg {
+    fill: white;
+  }
+
+  :hover {
+    color: white;
   }
 `;
 
